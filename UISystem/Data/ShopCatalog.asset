@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2af9b0e980f4f49953d43f0682799f, type: 3}
+  m_Name: ShopCatalog
+  m_EditorClassIdentifier: 
+  products:
+  - productId: item_001_health_potion
+    displayName: "\u751F\u547D\u836F\u6C34"
+    icon: {fileID: 21300000, guid: 56b19f02a900407488af998641c66c72, type: 3}
+    description: "\u6062\u590D 100 \u70B9\u751F\u547D\u503C\u3002\n\u65C5\u9014\u4E2D\u4E0D\u53EF\u7F3A\u5C11\u7684\u8865\u7ED9\u3002"
+    typeLabel: "\u666E\u901A \xB7 \u6D88\u8017\u54C1"
+    category: 1
+    unitPrice: 10
+    previewOwned: 8
+    typeColor: {r: 0.7294118, g: 0.7764706, b: 0.8352941, a: 1}
+  - productId: item_002_mana_potion
+    displayName: "\u9B54\u529B\u836F\u6C34"
+    icon: {fileID: 21300000, guid: 232353004394f394d80bc6eaf768d7e5, type: 3}
+    description: "\u6062\u590D 80 \u70B9\u9B54\u529B\u503C\u3002\n\u4E3A\u4E0B\u4E00\u6B21\u65BD\u6CD5\u505A\u597D\u51C6\u5907\u3002"
+    typeLabel: "\u666E\u901A \xB7 \u6D88\u8017\u54C1"
+    category: 1
+    unitPrice: 15
+    previewOwned: 5
+    typeColor: {r: 0.7294118, g: 0.7764706, b: 0.8352941, a: 1}
+  - productId: item_003_adventurer_sword
+    displayName: "\u65C5\u884C\u8005\u957F\u5251"
+    icon: {fileID: 21300000, guid: 463e41a6a3f31d84891cb868df87687e, type: 3}
+    description: "\u8F7B\u4FBF\u800C\u53EF\u9760\u7684\u957F\u5251\u3002\n\u9002\u5408\u65C5\u9014\u4E2D\u7684\u65E5\u5E38\u6218\u6597\u3002"
+    typeLabel: "\u7A00\u6709 \xB7 \u6B66\u5668"
+    category: 2
+    unitPrice: 240
+    previewOwned: 0
+    typeColor: {r: 0.5294118, g: 0.69803923, b: 0.8784314, a: 1}
+  - productId: item_004_guardian_shield
+    displayName: "\u5B88\u536B\u8005\u4E4B\u76FE"
+    icon: {fileID: 21300000, guid: bc46944ee963bbd4aa24c623616f4a1e, type: 3}
+    description: "\u91D1\u5C5E\u5305\u8FB9\u7684\u575A\u56FA\u76FE\u724C\u3002\n\u4E3A\u5192\u9669\u8005\u63D0\u4F9B\u53EF\u9760\u9632\u62A4\u3002"
+    typeLabel: "\u7A00\u6709 \xB7 \u88C5\u5907"
+    category: 2
+    unitPrice: 180
+    previewOwned: 0
+    typeColor: {r: 0.5294118, g: 0.69803923, b: 0.8784314, a: 1}
+  - productId: item_005_return_scroll
+    displayName: "\u56DE\u57CE\u5377\u8F74"
+    icon: {fileID: 21300000, guid: f0b4aca5866d24444abd68ccf710e232, type: 3}
+    description: "\u8BB0\u5F55\u56DE\u57CE\u5370\u8BB0\u7684\u5377\u8F74\u3002\n\u5730\u56FE\u4F20\u9001\u6548\u679C\u5C1A\u672A\u63A5\u5165\u3002"
+    typeLabel: "\u7CBE\u826F \xB7 \u9053\u5177"
+    category: 1
+    unitPrice: 50
+    previewOwned: 2
+    typeColor: {r: 0.54509807, g: 0.7764706, b: 0.7254902, a: 1}
+  - productId: item_006_amethyst
+    displayName: "\u7D2B\u6676\u788E\u7247"
+    icon: {fileID: 21300000, guid: 58fde05a371fcb24284863d563e9a9aa, type: 3}
+    description: "\u8574\u542B\u9B54\u529B\u7684\u7D2B\u8272\u6676\u4F53\u3002\n\u7528\u4E8E\u5236\u4F5C\u4E0E\u7814\u7A76\u7684\u6750\u6599\u3002"
+    typeLabel: "\u53F2\u8BD7 \xB7 \u6750\u6599"
+    category: 3
+    unitPrice: 80
+    previewOwned: 3
+    typeColor: {r: 0.7411765, g: 0.627451, b: 0.8980392, a: 1}
+  - productId: item_007_coin_pouch
+    displayName: "\u91D1\u5E01\u888B"
+    icon: {fileID: 21300000, guid: e3818a3e701837d49bdb8437488a3cc1, type: 3}
+    description: "\u88C5\u6709\u91D1\u5E01\u7684\u76AE\u9769\u94B1\u888B\u3002\n\u5F00\u542F\u6548\u679C\u5C1A\u672A\u63A5\u5165\u3002"
+    typeLabel: "\u666E\u901A \xB7 \u9053\u5177"
+    category: 3
+    unitPrice: 100
+    previewOwned: 0
+    typeColor: {r: 0.7294118, g: 0.7764706, b: 0.8352941, a: 1}
+  - productId: item_008_chest_key
+    displayName: "\u5B9D\u7BB1\u94A5\u5319"
+    icon: {fileID: 21300000, guid: b168c19702b4dac47b5008c6381d5e40, type: 3}
+    description: "\u4E00\u628A\u5E26\u6709\u516D\u89D2\u67C4\u7684\u94A5\u5319\u3002\n\u5F00\u7BB1\u6548\u679C\u5C1A\u672A\u63A5\u5165\u3002"
+    typeLabel: "\u7CBE\u826F \xB7 \u9053\u5177"
+    category: 3
+    unitPrice: 60
+    previewOwned: 1
+    typeColor: {r: 0.54509807, g: 0.7764706, b: 0.7254902, a: 1}
+  - productId: item_009_stamina_potion
+    displayName: "\u4F53\u529B\u836F\u6C34"
+    icon: {fileID: 21300000, guid: 0938bb90599b41741913f51da9ffd11e, type: 3}
+    description: "\u6062\u590D 50 \u70B9\u4F53\u529B\u503C\u3002\n\u4E3A\u63A5\u4E0B\u6765\u7684\u65C5\u7A0B\u8865\u5145\u4F53\u529B\u3002"
+    typeLabel: "\u666E\u901A \xB7 \u6D88\u8017\u54C1"
+    category: 1
+    unitPrice: 20
+    previewOwned: 2
+    typeColor: {r: 0.7294118, g: 0.7764706, b: 0.8352941, a: 1}
+  - productId: item_010_upgrade_stone
+    displayName: "\u5F3A\u5316\u77F3"
+    icon: {fileID: 21300000, guid: 93446c86107f21048b275e3f25007e99, type: 3}
+    description: "\u523B\u6709\u91D1\u5C5E\u94ED\u724C\u7684\u77F3\u6750\u3002\n\u5F3A\u5316\u6548\u679C\u5C1A\u672A\u63A5\u5165\u3002"
+    typeLabel: "\u7A00\u6709 \xB7 \u6750\u6599"
+    category: 3
+    unitPrice: 120
+    previewOwned: 4
+    typeColor: {r: 0.5294118, g: 0.69803923, b: 0.8784314, a: 1}
+  maxQuantity: 99
+  previewBalance: 1280
+  previewUsedSlots: 18
+  previewCapacity: 40
