@@ -13,8 +13,6 @@ namespace BagSystem.Shop
         private int minimum = 1, maximum = 99, value = 1;
         public int Value => value;
         public event Action<int> Changed;
-        public void Configure(TMP_InputField field, Button subtract, Button add)
-        { input = field; minus = subtract; plus = add; }
         private void Awake()
         {
             minus.onClick.AddListener(Decrease); plus.onClick.AddListener(Increase);

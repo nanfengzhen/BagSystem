@@ -14,11 +14,22 @@ namespace BagSystem.Shop
         private string productId;
         public event Action<string> Clicked;
 
-        public void Configure(Button b, Image i, TMP_Text n, TMP_Text t, TMP_Text p, GameObject border, GameObject tag)
-        { button = b; icon = i; title = n; type = t; price = p; selectionBorder = border; selectedTag = tag; }
-        private void Awake() { button.onClick.AddListener(HandleClick); }
-        private void OnDestroy() { if (button != null) button.onClick.RemoveListener(HandleClick); }
-        private void HandleClick() { Clicked?.Invoke(productId); }
+        //初始化按钮
+        private void Awake() 
+        { 
+            button.onClick.AddListener(HandleClick); 
+        }
+        private void OnDestroy() 
+        { 
+            if (button != null) button.onClick.RemoveListener(HandleClick); 
+        }
+
+        //点击按钮触发发送请求
+        private void HandleClick() 
+        { 
+            Clicked?.Invoke(productId);
+        }
+
         public void Bind(ShopProduct p)
         {
             productId = p.productId;
@@ -30,6 +41,8 @@ namespace BagSystem.Shop
             SetSelected(false);
         }
         public void SetSelected(bool selected)
-        { selectionBorder.SetActive(selected); selectedTag.SetActive(selected); }
+        { 
+            selectionBorder.SetActive(selected); selectedTag.SetActive(selected); 
+        }
     }
 }

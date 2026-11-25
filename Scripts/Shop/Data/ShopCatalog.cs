@@ -34,7 +34,6 @@ namespace BagSystem.Shop
         public int PreviewUsedSlots => previewUsedSlots;
         public int PreviewCapacity => previewCapacity;
 
-        public void SetProducts(List<ShopProduct> values) { products = values; }
         public void Validate()
         {
             if (maxQuantity < 1 || previewCapacity < 1 || previewUsedSlots > previewCapacity)

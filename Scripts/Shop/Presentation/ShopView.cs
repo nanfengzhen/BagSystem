@@ -9,33 +9,26 @@ namespace BagSystem.Shop
     public sealed class ShopView : MonoBehaviour
     {
         [SerializeField] private RectTransform content;
+
         [SerializeField] private ProductCardView cardPrefab;
         [SerializeField] private ProductDetailView detail;
         [SerializeField] private CategoryButtonView[] categories;
         [SerializeField] private QuantitySelectorView quantity;
         [SerializeField] private ConfirmDialogView dialog;
+
         [SerializeField] private TMP_Text balance, capacity, productCount, purchaseLabel, previewStatus;
         [SerializeField] private Image capacityFill;
         [SerializeField] private Button purchase, recharge, inventoryTab, close;
         private readonly List<ProductCardView> cards = new List<ProductCardView>();
+
         public event Action<ShopCategory> CategoryRequested;
-        public event Action<string> ProductRequested;
+        public event Action<string> ProductRequested;       //点击商品后的请求事件
         public event Action<int> QuantityChanged;
         public event Action PurchaseRequested, RechargeRequested, InventoryRequested, CloseRequested;
         public QuantitySelectorView Quantity => quantity;
         public ConfirmDialogView Dialog => dialog;
         public ProductDetailView Detail => detail;
-        public int VisibleProductCount => cards.Count;
 
-        public void Configure(RectTransform grid, ProductCardView prefab, ProductDetailView details,
-            CategoryButtonView[] categoryViews, QuantitySelectorView selector, ConfirmDialogView dialogs,
-            TMP_Text balanceText, TMP_Text capacityText, TMP_Text countText, TMP_Text buyText, TMP_Text status,
-            Image fill, Button buy, Button topUp, Button bag, Button exit)
-        {
-            content = grid; cardPrefab = prefab; detail = details; categories = categoryViews; quantity = selector; dialog = dialogs;
-            balance = balanceText; capacity = capacityText; productCount = countText; purchaseLabel = buyText; previewStatus = status;
-            capacityFill = fill; purchase = buy; recharge = topUp; inventoryTab = bag; close = exit;
-        }
         private void Awake()
         {
             cards.AddRange(content.GetComponentsInChildren<ProductCardView>(true));
@@ -59,18 +52,23 @@ namespace BagSystem.Shop
         private void OnRecharge() { RechargeRequested?.Invoke(); }
         private void OnInventory() { InventoryRequested?.Invoke(); }
         private void OnClose() { CloseRequested?.Invoke(); }
-        private void OnProduct(string id) { ProductRequested?.Invoke(id); }
+        private void OnProduct(string id) { ProductRequested?.Invoke(id); }    //接收到商品点击请求事件，触发 ProductRequested事件，完成具体点击商品操作
 
         public void RenderProducts(IReadOnlyList<ShopProduct> products, ShopCategory selected)
         {
+            //更新卡片
             foreach (var card in cards)
             { card.Clicked -= OnProduct; card.gameObject.SetActive(false); Destroy(card.gameObject); }
             cards.Clear();
+
+            //更新对应卡片商品
             foreach (var product in products)
             {
                 var card = Instantiate(cardPrefab, content, false);
                 card.name = "Product_" + product.productId; card.gameObject.SetActive(true);
-                card.Bind(product); card.Clicked += OnProduct; cards.Add(card);
+                card.Bind(product); 
+                card.Clicked += OnProduct;  //绑定对应的接收请求事件具体要做什么
+                cards.Add(card);
             }
             foreach (var category in categories) category.SetSelected(category.Category == selected);
             productCount.text = products.Count + " 件商品  ·  默认排序";

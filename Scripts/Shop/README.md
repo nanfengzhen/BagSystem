@@ -41,7 +41,7 @@
 8. `Views/QuantitySelectorView.cs`：输入和加减数量。
 9. `Views/ConfirmDialogView.cs`：确认、取消和提示弹窗。
 
-`Editor/ShopSceneBuilder.cs`是仅在编辑器使用的搭建工具，不随游戏运行。它通过Unity Editor API创建配置、Prefab和层级；不会在每次Play时重建场景。为保护已有编辑，它拒绝直接覆盖已存在的商城根、配置和Prefab。
+界面层级、Prefab 和商品配置已保存。组件引用通过 `[SerializeField]` 保存在场景和 Prefab 中，后续在 Unity Inspector 中绑定或调整。
 
 ## 后续业务接入点
 

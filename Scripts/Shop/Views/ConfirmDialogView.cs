@@ -12,9 +12,6 @@ namespace BagSystem.Shop
         [SerializeField] private Button confirm, cancel, close;
         private Action confirmed;
         public bool IsOpen => overlay.activeSelf;
-        public void Configure(GameObject root, TMP_Text h, TMP_Text b, TMP_Text okText, TMP_Text cancelText,
-                              Button ok, Button no, Button x)
-        { overlay = root; heading = h; body = b; confirmLabel = okText; cancelLabel = cancelText; confirm = ok; cancel = no; close = x; }
         private void Awake()
         { confirm.onClick.AddListener(Confirm); cancel.onClick.AddListener(Hide); close.onClick.AddListener(Hide); }
         private void OnDestroy()

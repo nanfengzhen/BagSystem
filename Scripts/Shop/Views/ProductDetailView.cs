@@ -8,8 +8,6 @@ namespace BagSystem.Shop
     {
         [SerializeField] private Image icon;
         [SerializeField] private TMP_Text title, type, description, unitPrice, owned;
-        public void Configure(Image i, TMP_Text n, TMP_Text t, TMP_Text d, TMP_Text p, TMP_Text o)
-        { icon = i; title = n; type = t; description = d; unitPrice = p; owned = o; }
         public void Render(ShopProduct p)
         {
             icon.enabled = true; icon.sprite = p.icon;

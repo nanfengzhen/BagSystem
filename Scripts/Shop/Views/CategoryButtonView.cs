@@ -13,8 +13,6 @@ namespace BagSystem.Shop
         [SerializeField] private ShopCategory category;
         public ShopCategory Category => category;
         public event Action<ShopCategory> Clicked;
-        public void Configure(Button b, Image image, Sprite n, Sprite s, GameObject mark, ShopCategory value)
-        { button = b; background = image; normal = n; selected = s; selectedMark = mark; category = value; }
         private void Awake() { button.onClick.AddListener(HandleClick); }
         private void OnDestroy() { if (button != null) button.onClick.RemoveListener(HandleClick); }
         private void HandleClick() { Clicked?.Invoke(category); }

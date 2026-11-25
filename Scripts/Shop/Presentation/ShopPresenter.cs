@@ -9,20 +9,28 @@ namespace BagSystem.Shop
         private readonly ShopView view;
         private ShopProduct selected;
         private int quantity = 1;
-        public string SelectedProductId => selected == null ? null : selected.productId;
-        public int Quantity => quantity;
+
         public long TotalPrice => selected == null ? 0 : (long)selected.unitPrice * quantity;
         public event Action<string, int> PurchaseConfirmed;
 
-        public ShopPresenter(ShopCatalog data, ShopView screen) { catalog = data; view = screen; }
+        public ShopPresenter(ShopCatalog data, ShopView screen) 
+        {
+            catalog = data; 
+            view = screen; 
+        }
         public void Initialize()
         {
             catalog.Validate();
-            view.CategoryRequested += SelectCategory; view.ProductRequested += SelectProduct;
-            view.QuantityChanged += ChangeQuantity; view.PurchaseRequested += RequestPurchase;
-            view.RechargeRequested += ShowRecharge; view.InventoryRequested += ShowInventory; view.CloseRequested += ShowClose;
+            view.CategoryRequested += SelectCategory; 
+            view.ProductRequested += SelectProduct;     //具体点击商品后的操作
+            view.QuantityChanged += ChangeQuantity; 
+            view.PurchaseRequested += RequestPurchase;
+            view.RechargeRequested += ShowRecharge; 
+            view.InventoryRequested += ShowInventory; 
+            view.CloseRequested += ShowClose;
             view.Quantity.SetRange(1, catalog.MaxQuantity);
-            view.RenderPreviewStatus(catalog); SelectCategory(ShopCategory.All);
+            view.RenderPreviewStatus(catalog); 
+            SelectCategory(ShopCategory.All);
         }
         public void SelectCategory(ShopCategory category)
         {
@@ -32,13 +40,17 @@ namespace BagSystem.Shop
             if (list.Count > 0) SelectProduct(list[0].productId);
             else { selected = null; view.Detail.Clear(); view.RenderTotal(0, false); }
         }
+
+        //选择商品后的的处理函数
         public void SelectProduct(string id)
         {
             selected = null;
             foreach (var product in catalog.Products) if (product.productId == id) { selected = product; break; }
             if (selected == null) throw new ArgumentException("Unknown productId: " + id);
             quantity = 1; view.Quantity.SetQuantity(quantity);
-            view.RenderSelection(id); view.Detail.Render(selected); view.RenderTotal(TotalPrice, true);
+            view.RenderSelection(id); 
+            view.Detail.Render(selected); 
+            view.RenderTotal(TotalPrice, true);
         }
         public void ChangeQuantity(int value)
         { quantity = Math.Max(1, Math.Min(catalog.MaxQuantity, value)); view.RenderTotal(TotalPrice, selected != null); }
@@ -57,9 +69,13 @@ namespace BagSystem.Shop
         private void ShowClose() { view.Dialog.ShowMessage("关闭入口", "商城已预留关闭事件。\n接入主界面后，可在此切回上一页面。"); }
         public void Dispose()
         {
-            view.CategoryRequested -= SelectCategory; view.ProductRequested -= SelectProduct;
-            view.QuantityChanged -= ChangeQuantity; view.PurchaseRequested -= RequestPurchase;
-            view.RechargeRequested -= ShowRecharge; view.InventoryRequested -= ShowInventory; view.CloseRequested -= ShowClose;
+            view.CategoryRequested -= SelectCategory; 
+            view.ProductRequested -= SelectProduct;
+            view.QuantityChanged -= ChangeQuantity; 
+            view.PurchaseRequested -= RequestPurchase;
+            view.RechargeRequested -= ShowRecharge; 
+            view.InventoryRequested -= ShowInventory; 
+            view.CloseRequested -= ShowClose;
             view.Dialog.Hide();
         }
     }
